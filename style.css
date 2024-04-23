@@ -1,0 +1,111 @@
+* {
+  padding: 0%;
+  margin: 0%;
+}
+body {
+  font-family: "Rubik", sans-serif;
+}
+.Main_Photo {
+  background: url(./images.jpeg) no-repeat center;
+  background-size: cover;
+  height: 500px;
+  position: relative;
+}
+
+#Main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  width: 100wh;
+}
+
+.Header_City-icon img {
+  height: 20px;
+  margin-left: 10px;
+}
+
+#Header_Date-Text {
+  font-size: 14px;
+  font-weight: 400;
+}
+#Header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2% 4%;
+}
+
+.City {
+  display: flex;
+  flex-direction: row;
+}
+
+.City p {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+#Weather {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  height: 75%;
+}
+
+.Weather_Widget-Header {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  padding: 8px;
+}
+#Weather_Widget {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 8px;
+  background-color: rgb(52, 153, 187);
+  border-radius: 25px;
+}
+
+.Weather_Widget-Header img {
+  height: 27px;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+}
+
+.Weather_Widget-Day {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 8px;
+  border-top: 1px solid;
+  width: 50vw;
+}
+.Weather_Widget-Day img {
+  height: 20px;
+}
+
+.Day_Temp {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.Weather-Today {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.Weather-Today img {
+  height: 75px;
+}
+.Day_Icon {
+  display: flex;
+  flex-direction: column;
+}
+.Data {
+}

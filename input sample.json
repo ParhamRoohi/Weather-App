@@ -1,0 +1,81 @@
+[
+  {
+    "date": "2024-04-15",
+    "dateTitle": "امروز",
+    "current": 22.01,
+    "min": 18.56,
+    "max": 22.29,
+    "weather": {
+      "id": 802,
+      "main": "Clouds",
+      "description": "scattered clouds",
+      "icon": "03d"
+    },
+    "backgroundColor": "linear-gradient(30deg, #d5dee7 0%, #fbfbfb 100%)",
+    "textColor": "#9da0af",
+    "customDescription": {
+      "text": "خنکای پاییز",
+      "emoji": "🍁"
+    }
+  },
+  {
+    "min": 16.09,
+    "max": 21.22,
+    "date": "2024-04-16",
+    "weather": {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04d"
+    },
+    "dateTitle": "سه‌شنبه 28"
+  },
+  {
+    "min": 17.3,
+    "max": 22.82,
+    "date": "2024-04-17",
+    "weather": {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04n"
+    },
+    "dateTitle": "چهارشنبه 29"
+  },
+  {
+    "min": 17.68,
+    "max": 24.08,
+    "date": "2024-04-18",
+    "weather": {
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky",
+      "icon": "01d"
+    },
+    "dateTitle": "پنج‌شنبه 30"
+  },
+  {
+    "min": 19.49,
+    "max": 26.49,
+    "date": "2024-04-19",
+    "weather": {
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky",
+      "icon": "01n"
+    },
+    "dateTitle": "جمعه 31"
+  },
+  {
+    "min": 21,
+    "max": 25.9,
+    "date": "2024-04-20",
+    "weather": {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04n"
+    },
+    "dateTitle": "شنبه 1"
+  }
+]
