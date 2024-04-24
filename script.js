@@ -5,12 +5,12 @@ const date = new Date().toLocaleDateString("fa-IR");
 let createWeatherWidgetDay;
 
 const icon = {
-  snow: "./1Asset 1.png",
-  storm: "./1Asset 2.png",
-  rain: "./1Asset 3.png",
-  partlyCloudy: "./1Asset 5.png",
-  rainDrop: "./1Asset 4.png",
-  sunny: "./1Asset 6.png",
+  snow: "./images/1Asset 1.png",
+  storm: "./images/1Asset 2.png",
+  rain: "./images/1Asset 3.png",
+  partlyCloudy: "./images/1Asset 5.png",
+  rainDrop: "./images/1Asset 4.png",
+  sunny: "./images/1Asset 6.png",
 };
 
 function getTodayWeatherDes(icon, min, max) {
