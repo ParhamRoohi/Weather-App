@@ -1,3 +1,40 @@
+const parentDiv = document.getElementById("Weather_Widget");
+const container = document.getElementById("Weather");
+const todayDiv = document.createElement("div");
+const date = new Date().toLocaleDateString("fa-IR");
+let createWeatherWidgetDay;
+
+const icon = {
+  snow: "./1Asset 1.png",
+  storm: "./1Asset 2.png",
+  rain: "./1Asset 3.png",
+  partlyCloudy: "./1Asset 5.png",
+  rainDrop: "./1Asset 4.png",
+  sunny: "./1Asset 6.png",
+};
+
+function getTodayWeatherDes(icon, min, max) {
+  todayDiv.innerHTML = `<div><img src="${icon}"/></div><div class="Data"><p> حداقل:${Math.round(
+    min
+  ).toLocaleString("fa-IR")}</p> <p>حداکثر:${Math.round(max).toLocaleString(
+    "fa-IR"
+  )}</p> </div>`;
+}
+
+function getWeatherForecastDes(date, icon, min, max) {
+  let myDate = new Date(date);
+  createWeatherWidgetDay.innerHTML = `<div class="Data"><p> ${myDate.toLocaleDateString(
+    "fa-IR",
+    {
+      weekday: "long",
+    }
+  )}</p></div><div class="Day_Icon"><img src="${icon}"/></div><div class="Day_Temp"><p> حداقل:${Math.round(
+    min
+  ).toLocaleString("fa-IR")}</p> <p>حداکثر:${Math.round(max).toLocaleString(
+    "fa-IR"
+  )}</p> </div>`;
+}
+
 async function getData() {
   const res = await fetch(
     "https://api.dastyar.io/express/weather?lat=35.67194277&lng=51.42434403"
@@ -6,22 +43,9 @@ async function getData() {
 
   console.log(data);
 
-  const parentDiv = document.getElementById("Weather_Widget");
-  const container = document.getElementById("Weather");
-  const date = new Date().toLocaleDateString("fa-IR");
-
-  const icon = {
-    snow: "./1Asset 1.png",
-    storm: "./1Asset 2.png",
-    rain: "./1Asset 3.png",
-    partlyCloudy: "./1Asset 5.png",
-    rainDrop: "./1Asset 4.png",
-    sunny: "./1Asset 6.png",
-  };
-
   data.forEach((day) => {
     const isToday = "امروز" === day.dateTitle;
-
+    createWeatherWidgetDay = document.createElement("div");
     if (isToday) {
       const todayDate_Header = document.getElementById("Header_Date-Text");
       todayDate_Header.innerText =
@@ -29,56 +53,53 @@ async function getData() {
         new Date().toLocaleDateString("fa-IR", {
           weekday: "long",
         });
-      const todayDiv = document.createElement("div");
       todayDiv.classList.add("Weather-Today");
       container.append(todayDiv);
 
       switch (day.weather.main) {
         case "Clouds":
-          todayDiv.innerHTML = `<div><img src="${icon.partlyCloudy}"/></div><div class="Data"><p> حداقل:${day.min}</p> <p>حداکثر:${day.max}</p> </div>`;
+          getTodayWeatherDes(icon.partlyCloudy, day.min, day.max);
           break;
         case "Clear":
-          todayDiv.innerHTML = `<div><img src="${icon.sunny}"/></div><div class="Data"><p> حداقل:${day.min}</p> <p>حداکثر:${day.max}</p> </div>`;
+          getTodayWeatherDes(icon.sunny, day.min, day.max);
           break;
         case "Rain":
-          todayDiv.innerHTML = `<div><img src="${icon.rain}"/></div><div class="Data"><p> حداقل:${day.min}</p> <p>حداکثر:${day.max}</p> </div>`;
+          getTodayWeatherDes(icon.rain, day.min, day.max);
           break;
         case "Storm":
-          todayDiv.innerHTML = `<div><img src="${icon.storm}"/></div><div class="Data"><p> حداقل:${day.min}</p> <p>حداکثر:${day.max}</p> </div>`;
+          getTodayWeatherDes(icon.storm, day.min, day.max);
           break;
         case "Snow":
-          todayDiv.innerHTML = `<div><img src="${icon.snow}"/></div><div class="Data"><p> حداقل:${day.min}</p> <p>حداکثر:${day.max}</p> </div>`;
+          getTodayWeatherDes(icon.snow, day.min, day.max);
           break;
         case "RainDrop":
-          todayDiv.innerHTML = `<div><img src="${icon.rainDrop}"/></div><div class="Data"><p> حداقل:${day.min}</p> <p>حداکثر:${day.max}</p> </div>`;
+          getTodayWeatherDes(icon.rainDrop, day.min, day.max);
           break;
       }
     } else {
-      const createWeatherWidgetDay = document.createElement("div");
       createWeatherWidgetDay.classList.add("Weather_Widget-Day");
       parentDiv.append(createWeatherWidgetDay);
       switch (day.weather.main) {
         case "Clouds":
-          createWeatherWidgetDay.innerHTML = `<div class="Data"><p> ${day.dateTitle}</p></div><div class="Day_Icon"><img src="${icon.partlyCloudy}"/></div><div class="Day_Temp"><p> حداقل:${day.min}</p> <p>حداکثر:${day.max}</p> </div>`;
+          getWeatherforecastDes(day.date, icon.partlyCloudy, day.min, day.max);
           break;
         case "Clear":
-          createWeatherWidgetDay.innerHTML = `<div class="Data"> <p > ${day.dateTitle}</p></div><div class="Day_Icon"><img src="${icon.sunny}"/></div><div class="Day_Temp"><p> حداقل:${day.min}</p> <p>حداکثر:${day.max}</p> </div>`;
+          getWeatherForecastDes(day.date, icon.sunny, day.min, day.max);
           break;
         case "Rain":
-          createWeatherWidgetDay.innerHTML = `<div class="Data"><p> ${day.dateTitle}</p></div><div class="Day_Icon"><img src="${icon.rain}"/></div><div class="Day_Temp"><p> حداقل:${day.min}</p> <p>حداکثر:${day.max}</p> </div>`;
+          getWeatherForecastDes(day.date, icon.rain, day.min, day.max);
           break;
         case "Storm":
-          createWeatherWidgetDay.innerHTML = `<div class="Data"><p> ${day.dateTitle}</p></div><div class="Day_Icon"><img src="${icon.storm}"/></div><div class="Day_Temp"><p> حداقل:${day.min}</p> <p>حداکثر:${day.max}</p> </div>`;
+          getWeatherForecastDes(day.date, icon.storm, day.min, day.max);
           break;
         case "Snow":
-          createWeatherWidgetDay.innerHTML = `<div class="Data"><p> ${day.dateTitle}</p></div><div class="Day_Icon"><img src="${icon.snow}"/></div><div class="Day_Temp"><p> حداقل:${day.min}</p> <p>حداکثر:${day.max}</p> </div>`;
+          getWeatherForecastDes(day.date, icon.snow, day.min, day.max);
           break;
         case "RainDrop":
-          createWeatherWidgetDay.innerHTML = `<div class="Data"><p> ${day.dateTitle}</p></div><div class="Day_Icon"><img src="${icon.rainDrop}"/></div><div class="Day_Temp"><p> حداقل:${day.min}</p> <p>حداکثر:${day.max}</p> </div>`;
+          getWeatherForecastDes(day.date, icon.rainDrop, day.min, day.max);
           break;
       }
     }
   });
 }
-
 getData();
