@@ -109,3 +109,20 @@ body {
 }
 .Data {
 }
+
+@media screen and (max-width: 350px) {
+  #Weather {
+    position: absolute;
+    top: 37px;
+    flex-direction: column-reverse;
+    height: 85%;
+  }
+}
+@media screen and (max-width: 500px) {
+  #Weather {
+    position: absolute;
+    top: 37px;
+    flex-direction: column-reverse;
+    height: 85%;
+  }
+}

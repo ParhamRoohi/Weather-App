@@ -81,7 +81,7 @@ async function getData() {
       parentDiv.append(createWeatherWidgetDay);
       switch (day.weather.main) {
         case "Clouds":
-          getWeatherforecastDes(day.date, icon.partlyCloudy, day.min, day.max);
+          getWeatherForecastDes(day.date, icon.partlyCloudy, day.min, day.max);
           break;
         case "Clear":
           getWeatherForecastDes(day.date, icon.sunny, day.min, day.max);
