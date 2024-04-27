@@ -5,16 +5,16 @@ const date = new Date().toLocaleDateString("fa-IR");
 let createWeatherWidgetDay;
 
 const icon = {
-  snow: "./images/1Asset 1.png",
-  storm: "./images/1Asset 2.png",
-  rain: "./images/1Asset 3.png",
-  partlyCloudy: "./images/1Asset 5.png",
-  rainDrop: "./images/1Asset 4.png",
-  sunny: "./images/1Asset 6.png",
+  snow: "./images/snow.png",
+  storm: "./images/storm.png",
+  rain: "./images/rain.png",
+  partlyCloudy: "./images/partlyCloudy.png",
+  rainDrop: "./images/rainDrop.png",
+  sunny: "./images/sunny.png",
 };
 
-function getTodayWeatherDes(icon, min, max) {
-  todayDiv.innerHTML = `<div><img src="${icon}"/></div><div class="Data"><p> حداقل:${Math.round(
+function getTodayWeatherDes(icon, min, max, text) {
+  todayDiv.innerHTML = `<div><img src="${icon}"/></div> <div>${text}</div><div class="Data"><p> حداقل:${Math.round(
     min
   ).toLocaleString("fa-IR")}</p> <p>حداکثر:${Math.round(max).toLocaleString(
     "fa-IR"
@@ -58,22 +58,54 @@ async function getData() {
 
       switch (day.weather.main) {
         case "Clouds":
-          getTodayWeatherDes(icon.partlyCloudy, day.min, day.max);
+          getTodayWeatherDes(
+            icon.partlyCloudy,
+            day.min,
+            day.max,
+            day.weather.description
+          );
           break;
         case "Clear":
-          getTodayWeatherDes(icon.sunny, day.min, day.max);
+          getTodayWeatherDes(
+            icon.sunny,
+
+            day.min,
+            day.max,
+            day.weather.description
+          );
           break;
         case "Rain":
-          getTodayWeatherDes(icon.rain, day.min, day.max);
+          getTodayWeatherDes(
+            icon.rain,
+
+            day.min,
+            day.max,
+            day.weather.description
+          );
           break;
         case "Storm":
-          getTodayWeatherDes(icon.storm, day.min, day.max);
+          getTodayWeatherDes(
+            icon.storm,
+            day.min,
+            day.max,
+            day.weather.description
+          );
           break;
         case "Snow":
-          getTodayWeatherDes(icon.snow, day.min, day.max);
+          getTodayWeatherDes(
+            icon.snow,
+            day.min,
+            day.max,
+            day.weather.description
+          );
           break;
         case "RainDrop":
-          getTodayWeatherDes(icon.rainDrop, day.min, day.max);
+          getTodayWeatherDes(
+            icon.rainDrop,
+            day.min,
+            day.max,
+            day.weather.description
+          );
           break;
       }
     } else {
@@ -101,5 +133,11 @@ async function getData() {
       }
     }
   });
+}
+function myFunction() {
+  var weather = document.div;
+  var element = document.body;
+  element.classList.toggle("Dark_Mode");
+  weather.classList.toggle("Dark_Weather");
 }
 getData();

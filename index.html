@@ -11,14 +11,18 @@
       type="text/css"
     />
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
-  <body class="Main_Photo">
+  <body>
     <header id="Header">
       <div class="City">
         <p>تهران</p>
         <div class="Header_City-icon">
-          <img src="./images/pin.png" alt="" />
+          <i class="fa fa-map-marker Header_City-icon"></i>
         </div>
       </div>
       <div class="Header_Date">
@@ -26,10 +30,11 @@
       </div>
     </header>
     <main id="Main">
+      <button onclick="myFunction()">Toggle dark mode</button>
       <section id="Weather">
         <div id="Weather_Widget">
           <div class="Weather_Widget-Header">
-            <img src="./images/noun-calendar-404.png" alt="" />
+            <i class="fa fa-calendar"></i>
             <p id="Weather_Widget-Day-text">پیش بینی روز های آینده</p>
           </div>
         </div>

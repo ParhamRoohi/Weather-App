@@ -4,25 +4,30 @@
 }
 body {
   font-family: Vazirmatn, sans-serif;
-}
-.Main_Photo {
-  background: url(./images/images.jpeg) no-repeat center;
-  background-size: cover;
-  height: 500px;
+  color: white;
+  background: linear-gradient(
+    167.44deg,
+    #0b7da1 0%,
+    #33aadd 47.38%,
+    #2dc8ea 100%
+  );
+  height: 493px;
   position: relative;
 }
 
 #Main {
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 70vh;
-  width: 100wh;
+  width: auto;
 }
 
-.Header_City-icon img {
+.Header_City-icon i {
   height: 20px;
   margin-left: 10px;
+  color: white;
 }
 
 #Header_Date-Text {
@@ -34,7 +39,8 @@ body {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
-  margin: 2% 4%;
+  margin: 3% 3% 6% 3%;
+  color: white;
 }
 
 .City {
@@ -49,26 +55,27 @@ body {
 
 #Weather {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 75%;
-  height: 75%;
+  width: auto;
+  height: auto;
+  gap: 40px;
+  opacity: 0px;
 }
 
 .Weather_Widget-Header {
   display: flex;
   flex-direction: row-reverse;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: flex-start;
   padding: 8px;
+  gap: 8px;
 }
 #Weather_Widget {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 8px;
-  background-color: rgb(52, 153, 187);
-  border-radius: 25px;
+  padding: 20px 30px;
+  margin: 20px;
+  width: 100%;
+  border-radius: 16px;
+  background: #ffffff0d;
+  flex: 70%;
 }
 
 .Weather_Widget-Header img {
@@ -78,36 +85,64 @@ body {
 }
 
 .Weather_Widget-Day {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
   justify-content: space-between;
   padding: 8px;
-  border-top: 1px solid;
-  width: 50vw;
+  border-top: 1px solid #ffffff1a;
+  width: 100vh;
 }
 .Weather_Widget-Day img {
-  height: 20px;
+  width: 40px;
+  height: 40px;
 }
 
 .Day_Temp {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
+  justify-items: end;
+  order: 1;
 }
 .Weather-Today {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   flex-direction: column;
+  flex: 30%;
 }
 .Weather-Today img {
-  height: 75px;
+  height: 150px;
+  width: 150px;
+}
+.Weather-Today > .Data {
+  display: flex;
+  gap: 16px;
+  text-align: center;
+  align-items: center;
 }
 .Day_Icon {
   display: flex;
   flex-direction: column;
+  gap: 40px;
+  order: 2;
+  align-items: end;
 }
 .Data {
+  order: 3;
+  text-align: end;
+}
+.Dark_Mode {
+  background: linear-gradient(
+    167.44deg,
+    #08244f 0%,
+    #134cb5 47.38%,
+    #0b42ab 100%
+  );
+}
+.Dark_Weather {
+  background: #0010264d;
 }
 
 @media screen and (max-width: 350px) {
