@@ -7,33 +7,20 @@ let createWeatherWidgetDay;
 const icon = {
   snow: "./images/snow.png",
   storm: "./images/storm.png",
-  rain: "./images/rain.png",
+  rain: "./images/rainDrop.png",
   partlyCloudy: "./images/partlyCloudy.png",
   rainDrop: "./images/rainDrop.png",
   sunny: "./images/sunny.png",
 };
 
-function getTodayWeatherDes(icon, min, max, text) {
-  todayDiv.innerHTML = `<div><img src="${icon}"/></div> <div>${text}</div><div class="Data"><p> حداقل:${Math.round(
-    min
-  ).toLocaleString("fa-IR")}</p> <p>حداکثر:${Math.round(max).toLocaleString(
-    "fa-IR"
-  )}</p> </div>`;
-}
-
-function getWeatherForecastDes(date, icon, min, max) {
-  let myDate = new Date(date);
-  createWeatherWidgetDay.innerHTML = `<div class="Data"><p> ${myDate.toLocaleDateString(
-    "fa-IR",
-    {
-      weekday: "long",
-    }
-  )}</p></div><div class="Day_Icon"><img src="${icon}"/></div><div class="Day_Temp"><p> حداقل:${Math.round(
-    min
-  ).toLocaleString("fa-IR")}</p> <p>حداکثر:${Math.round(max).toLocaleString(
-    "fa-IR"
-  )}</p> </div>`;
-}
+const weatherDescriptions = {
+  clearSky: "آسمان صاف",
+  fewClouds: "چند ابر",
+  brokenClouds: "ابرهای شکسته",
+  rain: "بارش باران",
+  thunderStorm: "طوفانی",
+  snow: "برف",
+};
 
 async function getData() {
   const res = await fetch(
@@ -62,7 +49,7 @@ async function getData() {
             icon.partlyCloudy,
             day.min,
             day.max,
-            day.weather.description
+            translateWeatherDescription(weatherDescriptions.fewClouds)
           );
           break;
         case "Clear":
@@ -71,16 +58,15 @@ async function getData() {
 
             day.min,
             day.max,
-            day.weather.description
+            translateWeatherDescription(weatherDescriptions.clearSky)
           );
           break;
         case "Rain":
           getTodayWeatherDes(
             icon.rain,
-
             day.min,
             day.max,
-            day.weather.description
+            translateWeatherDescription(weatherDescriptions.rain)
           );
           break;
         case "Storm":
@@ -88,7 +74,7 @@ async function getData() {
             icon.storm,
             day.min,
             day.max,
-            day.weather.description
+            translateWeatherDescription(weatherDescriptions.thunderStorm)
           );
           break;
         case "Snow":
@@ -96,7 +82,7 @@ async function getData() {
             icon.snow,
             day.min,
             day.max,
-            day.weather.description
+            translateWeatherDescription(weatherDescriptions.snow)
           );
           break;
         case "RainDrop":
@@ -104,7 +90,7 @@ async function getData() {
             icon.rainDrop,
             day.min,
             day.max,
-            day.weather.description
+            translateWeatherDescription(weatherDescriptions.brokenClouds)
           );
           break;
       }
@@ -134,10 +120,55 @@ async function getData() {
     }
   });
 }
-function myFunction() {
-  var weather = document.div;
-  var element = document.body;
-  element.classList.toggle("Dark_Mode");
-  weather.classList.toggle("Dark_Weather");
+
+function getTodayWeatherDes(icon, min, max, text) {
+  todayDiv.innerHTML = `<div><img src="${icon}"/></div> <div class ="text">${text}</div><div class="Data"><p> حداقل:${Math.round(
+    min
+  ).toLocaleString("fa-IR")}</p> <p>حداکثر:${Math.round(max).toLocaleString(
+    "fa-IR"
+  )}</p> </div>`;
 }
+
+function getWeatherForecastDes(date, icon, min, max) {
+  let myDate = new Date(date);
+  createWeatherWidgetDay.innerHTML = `<div class="Data"><p> ${myDate.toLocaleDateString(
+    "fa-IR",
+    {
+      weekday: "long",
+    }
+  )}</p></div><div class="Day_Icon"><img src="${icon}"/></div><div class="Day_Temp"><p> حداقل:${Math.round(
+    min
+  ).toLocaleString("fa-IR")}</p> <p>حداکثر:${Math.round(max).toLocaleString(
+    "fa-IR"
+  )}</p> </div>`;
+}
+
+function getCurrentTime() {
+  const now = new Date();
+  const hours = now.getHours();
+  return hours;
+}
+
+function setAppTheme() {
+  const element = document.body;
+  const currentTime = getCurrentTime();
+
+  if (currentTime >= 20 || currentTime < 6) {
+    element.classList.add("Dark_Mode");
+  } else {
+    element.classList.remove("Dark_Mode");
+  }
+}
+
+function translateWeatherDescription(description) {
+  const lowercaseDescription = description.toLowerCase();
+  if (lowercaseDescription in weatherDescriptions) {
+    return weatherDescriptions[lowercaseDescription];
+  } else {
+    return description;
+  }
+}
+
+setAppTheme();
+setInterval(setAppTheme, 5 * 60 * 1000);
 getData();

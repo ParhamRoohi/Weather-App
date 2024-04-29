@@ -141,8 +141,11 @@ body {
     #0b42ab 100%
   );
 }
-.Dark_Weather {
-  background: #0010264d;
+.text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-left: 30px;
 }
 
 @media screen and (max-width: 350px) {
