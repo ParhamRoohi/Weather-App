@@ -11,7 +11,8 @@ body {
     #33aadd 47.38%,
     #2dc8ea 100%
   );
-  height: 493px;
+
+  width: auto;
   position: relative;
 }
 
@@ -58,7 +59,6 @@ body {
   width: auto;
   height: auto;
   gap: 40px;
-  opacity: 0px;
 }
 
 .Weather_Widget-Header {
@@ -148,19 +148,21 @@ body {
   margin-left: 30px;
 }
 
-@media screen and (max-width: 350px) {
-  #Weather {
-    position: absolute;
-    top: 37px;
-    flex-direction: column-reverse;
-    height: 85%;
+
+
+
+
+/* @media screen and (max-width: 768px) {
+  .City p {
+    font-size: 14px;
   }
-}
-@media screen and (max-width: 500px) {
+
   #Weather {
-    position: absolute;
-    top: 37px;
     flex-direction: column-reverse;
-    height: 85%;
+    align-items: center;
   }
-}
+  #Header {
+    align-items: center;
+    padding-bottom: 10%;
+  }
+} */
